@@ -1,0 +1,27 @@
+---
+
+- name: Create /usr/lib/chrony directory
+  file:
+    path: /usr/lib/chrony
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy chrony helper
+  copy:
+    dest: /usr/lib/chrony/chrony-helper
+    src: chrony-helper
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy chrony exit hook
+  copy:
+    dest: /etc/dhcp/dhclient-exit-hooks.d/chrony
+    src: chrony
+    owner: root
+    group: root
+    mode: '0644'
+
+...
